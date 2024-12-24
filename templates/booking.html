@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+    <head>
+        <title>Reserve | Barks & Beans</title>
+        <link rel="icon" type="image/x-icon" href="{% static '/images/favicon/BB_Favicon.ico' %}">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+        <meta charset="utf-8">
+        <link rel="stylesheet"  href="{% static 'bootstrap/bootstrap.min.css' %} ">
+        <link rel="stylesheet" href="{% static 'js/bootstrap.min.js' %} ">
+        <!-- Font Awesome link -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+        <!-- StyleSheet link CSS -->
+        <link href="{% static 'css/style.css' %} " rel="stylesheet" type="text/css">
+        <link href="{% static 'css/my_style.css' %} " rel="stylesheet" type="text/css">
+        <link href="{% static 'css/mediaqueries.css' %}" rel="stylesheet" type="text/css">
+        <link href="{% static 'css/owl.carousel.min.css' %}" rel="stylesheet" type="text/css">
+        <link href="{% static 'css/owl.theme.default.min.css' %}" rel="stylesheet" type="text/css">
+        <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.css"> 
+    </head>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KWX99YCVES"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-KWX99YCVES');
+</script>  
+
+    <body>
+        <a  class="whats-app" href="http://surl.li/qhtydo" target="_blank">            
+            <img src="{% static 'images/navbar_whatsapp_img.png' %}" alt="" class="img-fluid hover-effect">            
+        </a>
+        
+        <div class="banner-section-outer">
+            {% include 'header.html' %}
+            
+            <section class="product-section nft-section checkout-section">
+                <form name="register" method="post" action="/bookmyslot">
+                    {% csrf_token %}
+                    <div class="container">
+                        <div class="row wow fadeInUp" data-aos="fade-up" data-wow-duration="2s">
+                            <div class="col-lg-8 col-md-7 col-12 mb-md-0 mb-4">
+                                <h3 class="text-white mb-lg-4 mb-3">Mark Our Calander for 
+                                                <select class="form-control" name="bookingOpt" id="bookingOpt" >
+                                                                    <option value="">-- select one--</option>
+                                                                    <option value="boarding">Boarding</option>
+                                                                    <option value="training">Training</option>
+                                                                    <option value="grooming">Grooming</option>                                            
+                                                                </select> 
+                                </h3>
+                                <div class="create-nft-box float-left w-100 position-relative">
+                                    <div class="form-group" >
+                                        <label>Parent Name*</label>
+                                        <input type="text" class="form-control" name="parName" id="parName" placeholder="Parent Name" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Pet Name*</label>
+                                        <input type="text" class="form-control" name="petName" id="petName" placeholder="Pet Name" required>
+                                    </div>
+                                    <div class="form-group special">
+                                        <label>Email address *</label>
+                                        <input type="email" class="form-control" name="email" id="email" placeholder="Email:" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Phone Number *</label>
+                                        <input type="number" class="form-control" name="phNum" id="phNum" placeholder="Phone Number" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Alternate Contact</label>
+                                        <input type="number" class="form-control" name="altNum" id="altNum" placeholder="Alternate Phone Number">
+                                    </div>
+                                    <div class="form-group special">
+                                        <label>Address *</label>
+                                        <input type="text" class="form-control" name="poAddress" id="poAddress" placeholder="Postal Address:" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Pet Breed *</label>
+                                        <input type="text" class="form-control" name="petBreed" id="petBreed" placeholder="Pet Breed" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Pet DOB*</label>
+                                        <input type="date" class="form-control" name="petDOB" id="petDOB" required>                                       
+                                    </div>
+                                    
+                                    <!--<div class="form-group" id="checkInDate">
+                                        <label>Check-in Date*</label>
+                                        <input type="date" class="form-control" name="chkIn" id="chkIn" required>
+                                    </div>
+                                    <div class="form-group" id="checkOutDate">
+                                        <label>Check-out Date*</label>
+                                        <input type="date" class="form-control" name="chkOut" id="chkOut" required>                                        
+                                    </div>
+                                    <div class="form-group special" id="feedingInfo">
+                                        <label>Feeding Instructions*</label>
+                                        <input type="text" class="form-control" name="feedInfo" id="feedInfo" placeholder="Feeding Info" required>
+                                    </div>-->                                   
+                                    
+
+                                    <div class="form-group">
+                                        <label>Pet Size*</label>
+                                        <select class="form-control" name="petSize" id="petSize" >
+                                            <option value="">-- select one--</option>
+                                            <option value="Small">Small</option>
+                                            <option value="Medium">Medium</option>
+                                            <option value="Large">Large</option>                                            
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Pet Behaviour*</label>
+                                        <select class="form-control" name="petBehave" id="petBehave">
+                                            <option value="">-- select one--</option>
+                                            <option value="Friendly">Friendly</option>
+                                            <option value="Aggressive">Aggressive</option>
+                                            <option value="protective">protective</option> 
+                                            <option value="Curious">Curious</option>
+                                            <option value="Obedient">Obedient</option> 
+                                            <option value="Stubborn">Stubborn</option> 
+                                            <option value="Playful">Playful</option>  
+                                            <option value="Outgoing">Outgoing</option>  
+                                            <option value="Fearless">Fearless</option>                                     
+                                        </select>                                        
+                                    </div>
+                                    <div id="service_dynamic">
+
+                                    </div>
+                                    <div class="form-group special mb-0">
+                                        <label>Any special Instruction</label>
+                                        <textarea class="form-control" id="specialInstruct" name="specialInstruct" rows="3" placeholder="Instruction:"></textarea>
+                                    </div>
+                                    <div class="form-check">
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <div class="input-group-text ">
+                                                    <input type="checkbox" name="aggreement" id="aggreement" aria-label="Checkbox for following text input"> I agree to the &nbsp;<a href="/termsnconditions" target="_blank">terms and conditions</a>&nbsp; of&nbsp; <b>Barks & Beans </b>&nbsp;and abide to the &nbsp; <a href="/policies" target="_blank">Policies </a> &nbsp; of the center. 
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    
+                                    <!--<div class="form-group">
+                                        <label>Last name *</label>
+                                        <input type="text" class="form-control" placeholder="Last Name:" required>
+                                    </div>
+                                    
+                                    
+                                    <div class="form-group special">
+                                        <label>Country / Region *</label>
+                                        <select class="form-control">
+                                            <option>America</option>
+                                            <option>Australia</option>
+                                            <option>America</option>
+                                            <option>Saudia</option>
+                                            <option>Belgium</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group special">
+                                        <label>Street address *</label>
+                                        <input type="text" class="form-control" placeholder="Street Address:" required>
+                                    </div>
+                                    <div class="form-group special">
+                                        <label>Postcode / ZIP *</label>
+                                        <input type="number" class="form-control" placeholder="Postcode:" required>
+                                    </div>
+                                    <div class="form-group special mb-0">
+                                        <label>Description</label>
+                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Message:"></textarea>
+                                    </div> -->
+                                    <div class="btn-outer">
+                                        <button type="submit" class="btn default-btn w-100 hover-effect" style="border-radius: 100px;">Book A Slot</button>
+                                    </div>                                   
+                                </div>
+                                  
+                                
+                                
+                            </div>
+                            <!--<div class="col-lg-4 col-md-5 col-12">
+                                <h3 class="text-white mb-lg-4 mb-3">Your order</h3>
+                                <div class="preview-box hover-effect">
+                                    <div class="product-outer">
+                                        <span>Product</span>
+                                        <span class="float-right total">Subtotal</span>
+                                    </div>
+                                    <div class="product-outer">
+                                        <span>Nft × 1</span>
+                                        <span class="float-right total">17.99 $</span>
+                                    </div>
+                                    <div class="product-outer">
+                                        <span>Subtotal</span>
+                                        <span class="float-right total">17.99 $</span>
+                                    </div>
+                                    <div class="shipping-outer">
+                                        <span class="shipping">Shipping</span>
+                                        <span class="price">Flat Rate: 9.00 $</span>
+                                    </div>
+                                    <div class="total-price-outer">
+                                        <span>Subtotal</span>
+                                        <span class="float-right total">26.99 $</span>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1">
+                                        <label class="form-check-label text-white" for="exampleRadios1">Direct bank transfer</label>
+                                        <p>Make your payment directly into our bank account.</p>
+                                    </div>
+                                    <div class="form-check border-0">
+                                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+                                        <label class="form-check-label text-white" for="exampleRadios2">Wallet Payment</label>
+                                        <p>Make your payment directly into wallet.</p>
+                                    </div>
+                                    <div class="btn-outer">
+                                        <button type="submit" class="btn default-btn w-100 hover-effect">Place a Bid</button>
+                                    </div>
+                                </div>
+                            </div>-->
+                        </div>
+                    </div>
+                </form>
+            </section>    
+        </div>   
+        
+    <div class="bottom-portion">
+        <div class="col-12"> 
+            <div class="copyright">
+                <p>Copyright © 2024 Barks & Beans All rights reserved.</p>
+            </div>
+        </div>
+    </div>
+    <!--<figure class="mb-0 footer_right_shape position-absolute top_bottom_shape">
+        <img src="{% static 'images/footer_right_shape.png' %}" alt="" class="img-fluid">
+    </figure>-->
+
+<!-- Latest compiled JavaScript -->
+<script src="{% static 'js/jquery-3.6.0.min.js' %}"></script>
+
+<script src="{% static 'js/popper.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="{% static 'js/owl.carousel.js' %}"></script>
+<script src="{% static 'js/carousel.js' %}"></script>
+<script src="{% static 'js/counter.js' %}"></script>
+<script src="{% static 'js/animation.js' %}"></script>
+<script src="{% static 'js/video-popup.js' %}"></script>
+<script src="{% static 'js/video-section.js' %}"></script>
+<script src="{% static 'js/remove-product.js' %}"></script>
+<script src="{% static 'js/booking.js' %}"></script>
+
+</body>
+</html>

@@ -1,0 +1,12 @@
+{% if user.pending_amount == 0 and user.total_amount == user.advance_amount and user.total_amount > 0 %}
+<center><span class="dot_green"></span></center>
+{% endif %}
+{% if user.pending_amount == user.total_amount and user.advance_amount == 0 and user.state_of_board != "InHouse" %}
+<center><span class="dot_red"></span></center>
+{% endif %}
+{% if user.advance_amount > 0 and user.advance_amount < user.total_amount %}
+<center><span class="dot_yellow"></span></center>
+{% endif %} 
+{% if user.state_of_board == "InHouse" and user.advance_amount == 0  %}
+<center><span class="dot_cyan"></span></center>
+{% endif %}

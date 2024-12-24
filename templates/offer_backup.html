@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+    <head>
+        <title>About | Barks & Beans</title>
+        <link rel="icon" type="image/x-icon" href="{% static '/images/favicon/BB_Favicon.ico' %}">
+        <link rel="stylesheet"  href="{% static 'bootstrap/bootstrap.min.css' %} ">
+        <link rel="stylesheet" href="{% static 'js/bootstrap.min.js' %} ">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+        <link href="{% static 'css/style.css' %} " rel="stylesheet" type="text/css">
+        <link href="{% static 'css/mediaqueries.css' %}" rel="stylesheet" type="text/css">
+        <link href="{% static 'css/owl.carousel.min.css' %}" rel="stylesheet" type="text/css">
+        <link href="{% static 'css/owl.theme.default.min.css' %}" rel="stylesheet" type="text/css">
+        <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.css">
+    </head>
+
+    <body>
+        <div class="banner-section-outer">
+            {% include 'header.html' %}
+            <section class="banner-section">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="text-lg-left text-center">
+                            <div class="banner-section-content">
+                                <table class="table">
+                                    <thead>
+                                        <tr><th colspan="2">Service Description</th><th align="center">Rate ( INR )</th> <th></th> </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr><td><b>Boarding</b></td></tr>
+                                        <tr><td align="right">1.</td><td>Half Day Boarding</td><td align="center">300</td></tr>
+                                        <tr><td align="right">2.</td><td>Day Boarding</td><td align="center">600</td></tr>
+                                        <tr><td align="right">3.</td><td>Full Boarding</td><td align="center">1000</td></tr>
+                                        <tr></tr>
+                                        <tr><td><b>Grooming</b></td></tr>
+                                        <tr><td align="right">1.</td><td>Luxury Grooming</td><td align="center">2200</td></tr>
+                                        <tr><td align="right">2.</td><td>Basic Grooming</td><td align="center">1800</td></tr>
+                                        <tr><td align="right">3.</td><td>Express Bath & Blow dry</td><td align="center">1200</td></tr>
+                                        <tr><td align="right">4.</td><td>Normal Bath</td><td align="center">900</td></tr>
+                                        <tr></tr>
+                                        <tr><td><b>Training</b></td></tr>
+                                        <tr><td align="right">1.</td><td>Basic Obedience</td><td align="center">22000 /25 sessions</td></tr>
+                                        <tr><td align="right">2.</td><td>Advance Obedience</td><td align="center">35000 /45 Sessions</td></tr>
+                                        <tr><td align="right">3.</td><td>Behaviour</td><td align="center">1199 /day</td></tr>
+                                        <tr><td align="right">4.</td><td>Assessment / Consultation</td><td align="center">1199 /day</td></tr>
+                                        <tr></tr>
+                                        <tr><td><b>Pickup & Drop</b></td></tr>
+                                        <tr><td align="right">1.</td><td>Up to 5 KMs.</td><td align="center">Free</td></tr>
+                                        <tr><td align="right">2.</td><td>5 - 10 KMs.</td><td align="center">800</td></tr>
+                                        <tr><td align="right">3.</td><td>10 - 20 KMs</td><td align="center">1200</td></tr>
+                                        <tr><td align="right">4.</td><td>  > 20 KMs</td><td align="center">15 /KM</td></tr>
+                                        <tr><td colspan="3"><hr></td> </tr>
+                                        
+                                        
+                
+                                    </tbody>
+                                </table>
+                            </div>
+                            <br><br>
+                            
+                        </div>
+                        <div class="col-lg-7 col-md-12 col-sm-12 col-12">
+                            <!--<div class="banner-section-image position-relative">-->
+                            <div class="banner-section-content">
+                                <table class="table">
+                                    <thead>
+                                        <tr><th colspan="2">Service Description</th><th align="center">Rate ( INR ) /Validity</th> <th></th> </tr>
+                                    </thead>
+                                    <tr><td><b>Subscription Packages</b></td></tr>
+                                    <tr><td align="right">1.</td><td>15 Days Boarding</td><td align="center">9999 /6 Months</td></tr>
+                                    <tr><td align="right">2.</td><td>40 Days Boarding</td><td align="center">24999 /6 Months</td></tr>
+                                    <tr><td align="right">3.</td><td>5 Basic Grooming</td><td align="center">7999 /6 Months</td></tr>
+                                    <tr><td align="right">4.</td><td> 5 Full Grooming </td><td align="center">9999 /6 Months</td></tr>
+                                    <tr></tr>
+                                    <tr><td><b>Training & Boarding</b></td></tr>
+                                    <tr><td align="right">1.</td><td>Basic Obedience</td><td align="center">27000 / 30 days</td></tr>
+                                    <tr><td align="right">2.</td><td>Advance Obedience</td><td align="center">50000 / 45 days</td></tr>
+                                    <tr><td align="right">3.</td><td>Off Leash Training</td><td align="center">30000 / 30 days</td></tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <!-- Latest compiled JavaScript -->
+<script src="{% static 'js/jquery-3.6.0.min.js' %}"></script>
+<script src="{% static 'js/popper.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="{% static 'js/owl.carousel.js' %}"></script>
+<script src="{% static 'js/carousel.js' %}"></script>
+<script src="{% static 'js/counter.js' %}"></script>
+<script src="{% static 'js/animation.js' %}"></script>
+<script src="{% static 'js/video-popup.js' %}"></script>
+<script src="{% static 'js/video-section.js' %}"></script>
+<script src="{% static 'js/remove-product.js' %}"></script>
+</body>
+</html>

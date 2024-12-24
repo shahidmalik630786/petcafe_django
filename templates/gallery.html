@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+    <head>
+        <title>Gallery | Barks & Beans</title>
+        <link rel="icon" type="image/x-icon" href="{% static '/images/favicon/BB_Favicon.ico' %}">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+        <meta charset="utf-8">
+        <link rel="stylesheet"  href="{% static 'bootstrap/bootstrap.min.css' %} ">
+        <link rel="stylesheet" href="{% static 'js/bootstrap.min.js' %} ">
+        <!-- Font Awesome link -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+        <!-- StyleSheet link CSS -->
+        <link href="{% static 'css/style.css' %} " rel="stylesheet" type="text/css">
+        <link href="{% static 'css/my_style.css' %} " rel="stylesheet" type="text/css">
+        <link href="{% static 'css/mediaqueries.css' %}" rel="stylesheet" type="text/css">
+        <link href="{% static 'css/owl.carousel.min.css' %}" rel="stylesheet" type="text/css">
+        <link href="{% static 'css/owl.theme.default.min.css' %}" rel="stylesheet" type="text/css">
+        <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.css">           
+    </head>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KWX99YCVES"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-KWX99YCVES');
+</script>
+    <body>
+        <a  class="whats-app" href="http://surl.li/qhtydo" target="_blank">            
+            <img src="{% static 'images/navbar_whatsapp_img.png' %}" alt="" class="img-fluid hover-effect">            
+        </a>
+        <div class="sub-banner-section-outer gallery-banner-section-outer">
+            {% include 'header.html' %}
+
+            <!-- SUB BANNER SECTION -->
+            <section class="banner-section">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-2 col-md-12 col-sm-12 col-12 d-lg-block d-none"></div>
+                        <div class="col-lg-8 col-md-12 col-sm-12 col-12 text-center">
+                            <div class="banner-section-content">
+                                <h1 data-aos="fade-up">Gallery</h1>
+                                <p data-aos="fade-right">Our Track records, what we have achieved so far together...</p>
+                                <div class="btn_wrapper" data-aos="fade-up">
+                                    <span>Home </span><span class="slash">/</span><span class="sub_span"> Gallery</span>
+                                </div>
+                                <figure class="sub_banner_content_top_shape mb-0 position-absolute left_right_shape">
+                                    <img src="{% static 'images/sub_banner_content_top_shape.png' %}" alt="" class="img-fluid">
+                                </figure>
+                                <figure class="sub_banner_pink_foot_shape mb-0 position-absolute top_bottom_shape">
+                                    <img src="{% static 'images/sub_banner_pink_foot.png' %}" alt="" class="img-fluid">
+                                </figure>
+                                <figure class="sub_banner_green_foot_shape mb-0 position-absolute top_bottom_shape">
+                                    <img src="{% static 'images/sub_banner_green_foot.png' %}" alt="" class="img-fluid">
+                                </figure>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-12 col-sm-12 col-12 d-lg-block d-none"></div>
+                    </div>
+                    <figure class="sub_banner_left_shape mb-0 position-absolute top_bottom_shape">
+                        <img src="{% static 'images/sub_banner_left_shape.png' %}" alt="" class="img-fluid">
+                    </figure>
+                    <figure class="sub_banner_right_shape mb-0 position-absolute top_bottom_shape">
+                        <img src="{% static 'images/sub_banner_right_shape.png' %}" alt="" class="img-fluid">
+                    </figure>
+                </div>
+            </section>
+        </div>
+
+        <!-- GALLERY SECTION -->
+        <section class="gallery_section position-relative">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                        <div class="gallery_content">
+                            <h6>Gallery</h6>
+                            <h2>Our Photos Gallery</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="tabs-box tabs-options">
+                    <ul class="nav nav-tabs">
+                        <li><a class="active" data-toggle="tab" href="#all">All</a></li>
+                        <li><a data-toggle="tab" href="#walking_sitting" class="walking">Walking & Sitting</a></li>
+                        <li><a data-toggle="tab" href="#grooming" class="grooming">Grooming</a></li>
+                        <li><a data-toggle="tab" href="#training" class="training">Training</a></li>
+                        <li><a data-toggle="tab" href="#health_wellness" class="health">Health & Wellness</a></li>
+                    </ul>
+                    <div class="tab-content" data-aos="fade-up">
+                        <div id="all" class="tab-pane fade in active show">
+                            <div class="row position-relative">
+                                <div class="col-lg-4 col-md-4 col-sm-6 col-12">
+                                    <div class="gallery_image">
+                                        <figure class="mb-0">
+                                            <img src="{% static 'images/gallery/1.jpg' %}" alt="" class="img-fluid">
+                                        </figure>
+                                        <div class="overlay bottom-overlay">
+                                            <div class="box_hover_effect">
+                                                <a href="/gallery" target="_blank">
+                                                    <i class="fa-solid fa-magnifying-glass-plus"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-sm-6 col-12">
+                                    <div class="gallery_image">
+                                        <figure class="mb-0">
+                                            <img src="{% static 'images/gallery/2.jpg' %}" alt="" class="img-fluid">
+                                        </figure>
+                                        <div class="overlay bottom-overlay">
+                                            <div class="box_hover_effect">
+                                                <a href="/gallery" target="_blank">
+                                                    <i class="fa-solid fa-magnifying-glass-plus"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-sm-6 col-12">
+                                    <div class="gallery_image">
+                                        <figure class="mb-0">
+                                            <img src="{% static 'images/gallery/3.jpg' %}" alt="" class="img-fluid">
+                                        </figure>
+                                        <div class="overlay bottom-overlay">
+                                            <div class="box_hover_effect">
+                                                <a href="/gallery" target="_blank">
+                                                    <i class="fa-solid fa-magnifying-glass-plus"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <figure class="gallery_image_right_shape mb-0 position-absolute left_right_shape">
+                                    <img src="{% static 'images/gallery/4.jpg' %}" alt="" class="img-fluid">
+                                </figure>
+                            </div>
+                            <div class="row position-relative">
+                                <div class="col-lg-4 col-md-4 col-sm-6 col-12">
+                                    <div class="gallery_image">
+                                        <figure class="mb-0">
+                                            <img src="{% static 'images/gallery/HnW1.jpg' %}" alt="" class="img-fluid">
+                                        </figure>
+                                        <div class="overlay bottom-overlay">
+                                            <div class="box_hover_effect">
+                                                <a href="/gallery" target="_blank">
+                                                    <i class="fa-solid fa-magnifying-glass-plus"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-sm-6 col-12">
+                                    <div class="gallery_image">
+                                        <figure class="mb-0">
+                                            <img src="./assets/images/gallery_image5.jpg" alt="" class="img-fluid">
+                                        </figure>
+                                        <div class="overlay bottom-overlay">
+                                            <div class="box_hover_effect">
+                                                <a href="./gallery.html" target="_blank">
+                                                    <i class="fa-solid fa-magnifying-glass-plus"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-sm-6 col-12">
+                                    <div class="gallery_image">
+                                        <figure class="mb-0">
+                                            <img src="./assets/images/gallery_image6.jpg" alt="" class="img-fluid">
+                                        </figure>
+                                        <div class="overlay bottom-overlay">
+                                            <div class="box_hover_effect">
+                                                <a href="./gallery.html" target="_blank">
+                                                    <i class="fa-solid fa-magnifying-glass-plus"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="walking_sitting" class="tab-pane fade">
+                            <div class="row position-relative">
+                                <div class="col-lg-4 col-md-4 col-sm-6 col-12">
+                                    <div class="gallery_image">
+                                        <figure class="mb-0">
+                                            <img src="{% static 'images/gallery/WnS1.jpg' %}" alt="" class="img-fluid">
+                                        </figure>
+                                        <div class="overlay bottom-overlay">
+                                            <div class="box_hover_effect">
+                                                <a href="/gallery" target="_blank">
+                                                    <i class="fa-solid fa-magnifying-glass-plus"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-sm-6 col-12">
+                                    <div class="gallery_image">
+                                        <figure class="mb-0">
+                                            <img src="{% static 'images/gallery_image2.jpg' %}" alt="" class="img-fluid">
+                                        </figure>
+                                        <div class="overlay bottom-overlay">
+                                            <div class="box_hover_effect">
+                                                <a href="./gallery.html" target="_blank">
+                                                    <i class="fa-solid fa-magnifying-glass-plus"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-sm-6 col-12">
+                                    <div class="gallery_image">
+                                        <figure class="mb-0">
+                                            <img src="{% static 'images/gallery_image3.jpg' %}" alt="" class="img-fluid">
+                                        </figure>
+                                        <div class="overlay bottom-overlay">
+                                            <div class="box_hover_effect">
+                                                <a href="./gallery.html" target="_blank">
+                                                    <i class="fa-solid fa-magnifying-glass-plus"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <figure class="gallery_image_right_shape mb-0 position-absolute left_right_shape">
+                                    <img src="./assets/images/gallery_image_right_shape.png" alt="" class="img-fluid">
+                                </figure>
+                            </div>
+                        </div>
+                        <div id="grooming" class="tab-pane fade">
+                            <div class="row position-relative">
+                                <div class="col-lg-4 col-md-4 col-sm-6 col-12">
+                                    <div class="gallery_image">
+                                        <figure class="mb-0">
+                                            <img src="./assets/images/gallery_image4.jpg" alt="" class="img-fluid">
+                                        </figure>
+                                        <div class="overlay bottom-overlay">
+                                            <div class="box_hover_effect">
+                                                <a href="./gallery.html" target="_blank">
+                                                    <i class="fa-solid fa-magnifying-glass-plus"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-sm-6 col-12">
+                                    <div class="gallery_image">
+                                        <figure class="mb-0">
+                                            <img src="./assets/images/gallery_image5.jpg" alt="" class="img-fluid">
+                                        </figure>
+                                        <div class="overlay bottom-overlay">
+                                            <div class="box_hover_effect">
+                                                <a href="./gallery.html" target="_blank">
+                                                    <i class="fa-solid fa-magnifying-glass-plus"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-sm-6 col-12">
+                                    <div class="gallery_image">
+                                        <figure class="mb-0">
+                                            <img src="./assets/images/gallery_image6.jpg" alt="" class="img-fluid">
+                                        </figure>
+                                        <div class="overlay bottom-overlay">
+                                            <div class="box_hover_effect">
+                                                <a href="./gallery.html" target="_blank">
+                                                    <i class="fa-solid fa-magnifying-glass-plus"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <figure class="gallery_image_right_shape mb-0 position-absolute left_right_shape">
+                                    <img src="./assets/images/gallery_image_right_shape.png" alt="" class="img-fluid">
+                                </figure>
+                            </div>
+                        </div>
+                        <div id="training" class="tab-pane fade">
+                            <div class="row position-relative">
+                                <div class="col-lg-4 col-md-4 col-sm-6 col-12">
+                                    <div class="gallery_image">
+                                        <figure class="mb-0">
+                                            <img src="./assets/images/gallery_image1.jpg" alt="" class="img-fluid">
+                                        </figure>
+                                        <div class="overlay bottom-overlay">
+                                            <div class="box_hover_effect">
+                                                <a href="./gallery.html" target="_blank">
+                                                    <i class="fa-solid fa-magnifying-glass-plus"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-sm-6 col-12">
+                                    <div class="gallery_image">
+                                        <figure class="mb-0">
+                                            <img src="./assets/images/gallery_image2.jpg" alt="" class="img-fluid">
+                                        </figure>
+                                        <div class="overlay bottom-overlay">
+                                            <div class="box_hover_effect">
+                                                <a href="./gallery.html" target="_blank">
+                                                    <i class="fa-solid fa-magnifying-glass-plus"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-sm-6 col-12">
+                                    <div class="gallery_image">
+                                        <figure class="mb-0">
+                                            <img src="./assets/images/gallery_image6.jpg" alt="" class="img-fluid">
+                                        </figure>
+                                        <div class="overlay bottom-overlay">
+                                            <div class="box_hover_effect">
+                                                <a href="./gallery.html" target="_blank">
+                                                    <i class="fa-solid fa-magnifying-glass-plus"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <figure class="gallery_image_right_shape mb-0 position-absolute left_right_shape">
+                                    <img src="./assets/images/gallery_image_right_shape.png" alt="" class="img-fluid">
+                                </figure>
+                            </div>
+                        </div>
+                        <div id="health_wellness" class="tab-pane fade">
+                            <div class="row position-relative">
+                                <div class="col-lg-4 col-md-4 col-sm-6 col-12">
+                                    <div class="gallery_image">
+                                        <figure class="mb-0">
+                                            <img src="{% static 'images/gallery/HnW1.jpg' %}" alt="" class="img-fluid">
+                                        </figure>
+                                        <div class="overlay bottom-overlay">
+                                            <div class="box_hover_effect">
+                                                <a href="./gallery.html" target="_blank">
+                                                    <i class="fa-solid fa-magnifying-glass-plus"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-sm-6 col-12">
+                                    <div class="gallery_image">
+                                        <figure class="mb-0">
+                                            <img src="{% static 'images/gallery/HnW2.jpg' %}" alt="" class="img-fluid">
+                                        </figure>
+                                        <div class="overlay bottom-overlay">
+                                            <div class="box_hover_effect">
+                                                <a href="./gallery.html" target="_blank">
+                                                    <i class="fa-solid fa-magnifying-glass-plus"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-sm-6 col-12">
+                                    <div class="gallery_image">
+                                        <figure class="mb-0">
+                                            <img src="./assets/images/gallery_image3.jpg" alt="" class="img-fluid">
+                                        </figure>
+                                        <div class="overlay bottom-overlay">
+                                            <div class="box_hover_effect">
+                                                <a href="./gallery.html" target="_blank">
+                                                    <i class="fa-solid fa-magnifying-glass-plus"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <figure class="gallery_image_right_shape mb-0 position-absolute left_right_shape">
+                                    <img src="./assets/images/gallery_image_right_shape.png" alt="" class="img-fluid">
+                                </figure>
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+                <figure class="gallery_big_foot_shape mb-0 position-absolute top_bottom_shape">
+                    <img src="./assets/images/gallery_big_foot_shape.png" alt="" class="img-fluid">
+                </figure>
+                <figure class="gallery_small_foot_shape mb-0 position-absolute top_bottom_shape">
+                    <img src="./assets/images/gallery_small_foot_shape.png" alt="" class="img-fluid">
+                </figure>
+            </div>
+        </section>
+
+
+        <!-- NEWSLETTER SECTION -->
+        <section class="stats_news_combo_section">
+            <div class="newsletter_section">
+                <div class="container">
+                    <div class="newsletter_box position-relative">
+                        <div class="row">
+                            <div class="col-lg-5 col-md-5 col-sm-12 col-12 order-md-1 order-2">
+                                <figure class="newsletter_image mb-0 position-absolute">
+                                    <img src="{% static 'images/newsletter_image.png' %}" alt="" class="img-fluid">
+                                </figure>
+                            </div>
+                            <div class="col-lg-7 col-md-7 col-sm-12 col-12 order-md-2 order-1">
+                                <div class="newsletter_content">
+                                    <h6>Newsletter</h6>
+                                    <h2>Subscribe To Our Newsletter</h2>
+                                    <form method="POST">
+                                        <div class="form-row">
+                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                <input type="email" name="email" id="emailadd" class="form-control" placeholder="Enter Your Email:">
+                                                <div class="input-group-append form-button">
+                                                    <button class="default-btn" name="btnsubmit" id="submitbtn" type="submit">Subscribe Now</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <figure class="newsletter_yellow_shape mb-0 position-absolute left_right_shape">
+                            <img src="{% static 'images/newsletter_yellow_shape.png' %}" alt="" class="img-fluid">
+                        </figure>
+                    </div>
+                    <figure class="newsletter_purple_foot mb-0 position-absolute top_bottom_shape">
+                        <img src="{% static 'images/newsletter_purple_foot.png' %}" alt="" class="img-fluid">
+                    </figure>
+                    <figure class="newsletter_green_foot mb-0 position-absolute top_bottom_shape">
+                        <img src="{% static 'images/newsletter_green_foot.png' %}" alt="" class="img-fluid">
+                    </figure>
+                </div>
+            </div>
+        </section>
+
+        <!-- FOOTER SECTION -->
+<section class="footer-section">
+    <div class="container">
+        <div class="middle-portion">
+            <div class="row">
+                <div class="col-lg-5 col-md-5 col-sm-6 col-12">
+                    <div class="about_col">
+                        <a href="/">
+                            <figure>
+                                <img src="{% static 'images/BB_LOGO_WHT.png' %}" alt="" class="img-fluid">
+                            </figure>
+                        </a>
+                        <p>Barks & Beans welcomes you with your furry friend at their own home away from home ...</p>
+                        <div class="headphone_wrapper">
+                            <figure class="mb-0">
+                                <img src="{% static 'images/footer_headphone.png' %}" alt="" class="img-fluid">
+                            </figure>
+                            <div class="headphone_content">
+                                <a href="tel:+916371522014" class="text-decoration-none d-block">+91-63715 22014</a>
+                                <span>Got Questions? Call us 24/7</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-12 d-lg-block d-none">
+                    <div class="hours_col">
+                        <h3>Working Hours</h3>
+                        <ul class="list-unstyled">
+                            <li>
+                                <p>Monday – Sunday</p>
+                            </li>
+                            <li>
+                                <span>09:00 am – 07:00 pm</span>
+                            </li>
+                            
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-12 d-md-block d-none">
+                    <div class="links_col">
+                        <h3>Navigation</h3>
+                        <ul class="list-unstyled">
+                            <li>
+                                <i class="fa-solid fa-angle-right"></i>
+                                <a href="/">Home</a>
+                            </li>
+                            <li>
+                                <i class="fa-solid fa-angle-right"></i>
+                                <a href="/about">About us</a>
+                            </li>
+                            <li>
+                                <i class="fa-solid fa-angle-right"></i>
+                                <a href="/services">Services</a>
+                            </li>
+                            <!--<li>
+                                <i class="fa-solid fa-angle-right"></i>
+                                <a href="./shop.html">Our Shop</a>
+                            </li>-->
+                            <li>
+                                <i class="fa-solid fa-angle-right"></i>
+                                <a href="/offer">Packages</a>
+                            </li>
+                            <li>
+                                <i class="fa-solid fa-angle-right"></i>
+                                <a href="/gallery">Gallery</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6 col-12 d-sm-block d-none">
+                    <div class="contact_col">
+                        <h3>Contact Us</h3>
+                        <ul class="list-unstyled">
+                            <li>
+                                <p>Address:</p>
+                            </li>
+                            <li>
+                                <span>Barks & Beans, Halasahalli, Bengaluru, Karnataka 560087</span>
+                            </li>
+                            <li>
+                                <p>Email:</p>
+                            </li>
+                            <li class="mail">
+                                <a href="mailto:barksnbeans@gmail.com" class="text-decoration-none">barksnbeans@gmail.com</a>
+                            </li>
+                        </ul>
+                        <ul class="list-unstyled">
+                            <li class="icons"><a href="#"><i class="fa-brands fa-facebook-f hover-effect" aria-hidden="true"></i></a></li>
+                            <li class="icons"><a href="#"><i class="fa-brands fa-twitter hover-effect" aria-hidden="true"></i></a></li>
+                            <li class="icons"><a href="#"><i class="fa-brands fa-instagram mr-0 hover-effect" aria-hidden="true"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="bottom-portion">
+        <div class="col-12"> 
+            <div class="copyright">
+                <p>Copyright © 2024 Barks & Beans All rights reserved.</p>
+            </div>
+        </div>
+    </div>
+    <figure class="mb-0 footer_right_shape position-absolute top_bottom_shape">
+        <img src="{% static 'images/footer_right_shape.png' %}" alt="" class="img-fluid">
+    </figure>
+</section>
+
+        <!-- Latest compiled JavaScript -->
+        <script src="{% static 'js/jquery-3.6.0.min.js' %}"></script>
+        <script src="{% static 'js/popper.min.js' %}"></script>
+        <script src="{% static 'js/bootstrap.min.js' %}"></script>
+        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+        <script src="{% static 'js/owl.carousel.js' %}"></script>
+        <script src="{% static 'js/carousel.js' %}"></script>
+        <script src="{% static 'js/counter.js' %}"></script>
+        <script src="{% static 'js/animation.js' %}"></script>
+        <script src="{% static 'js/video-popup.js' %}"></script>
+        <script src="{% static 'js/video-section.js' %}"></script>
+        <script src="{% static 'js/remove-product.js' %}"></script>
+        <script src="{%static 'js/dialogue.js' %}"></script>
+    </body>
+</html>

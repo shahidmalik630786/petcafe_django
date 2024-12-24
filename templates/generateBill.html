@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+    <head>
+        <title>Generate Bill | Barks & Beans</title>
+        <link rel="icon" type="image/x-icon" href="{% static '/images/favicon/BB_Favicon.ico' %}">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+        <meta charset="utf-8">
+        <link rel="stylesheet"  href="{% static 'bootstrap/bootstrap.min.css' %} ">
+        <link rel="stylesheet" href="{% static 'js/bootstrap.min.js' %} ">
+        <!-- Font Awesome link -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+        <!-- StyleSheet link CSS -->
+        <link href="{% static 'css/style.css' %} " rel="stylesheet" type="text/css">
+        <link href="{% static 'css/generateBill.css' %} " rel="stylesheet" type="text/css">
+        <link href="{% static 'css/animate.min.css' %} " rel="stylesheet" type="text/css">
+        <link href="{% static 'css/mediaqueries.css' %}" rel="stylesheet" type="text/css">
+        <link href="{% static 'css/owl.carousel.min.css' %}" rel="stylesheet" type="text/css">
+        <link href="{% static 'css/owl.theme.default.min.css' %}" rel="stylesheet" type="text/css">
+        <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.css">
+       
+
+        
+    </head>
+    <body>
+        <div class="banner-section-outer">
+            {% include 'header.html' %}
+            <section class="product-section nft-section checkout-section">
+                <form name="edit_entry" id="edit_entry" method="post" action="/generateInvoice/{{ petDetails.id }}">
+                    {% csrf_token %}
+                    <div class="container">                                                
+                        <div class="row wow fadeInUp" data-aos="fade-up" data-wow-duration="2s">
+                            <div class="col-lg-8 col-md-7 col-12 mb-md-0 mb-4">
+                                <h3 class="text-white mb-lg-4 mb-3"> Generate Bill For {{ petDetails.Pet_Name }}                                               
+                                </h3>                                
+                                <div class="create-nft-box float-left w-100 position-relative">
+                                    <div class="form-group mx-sm-3">
+                                        <label>Service Taken *</label>
+                                        <select class="form-control" name="serviceTaken" id="ServiceTaken" >
+                                            <option value="">-- select one--</option>
+                                            <option value="boarding">Boarding</option>
+                                            <option value="training">Training</option>
+                                            <option value="grooming">Grooming</option>
+                                            <option value="pickupnDrop">pickUp & Drop</option>                                           
+                                        </select>                                        
+                                    </div>
+                                    <div class="form-group" >
+                                        <label>Parent Name*</label>                                        
+                                        <input type="text" class="form-control" name="parName" id="parName" placeholder="Parent Name" value="{{ petDetails.Parent_Name }}" disabled="True" >
+                                    </div>                                                                       
+                                    <div class="form-group">
+                                        <label>Phone Number*</label>
+                                        <input type="number" class="form-control" name="phNum" id="phNum" placeholder="Phone Number" value= "{{ petDetails.Phone_Number }}" disabled="True" >
+                                    </div> 
+                                                                     
+                                    <div class="form-group special">
+                                        <label>Address*</label>
+                                        <input type="text" class="form-control" name="poAddress" id="poAddress" placeholder="Postal Address:" value="{{ petDetails.Address }}" >
+                                    </div> 
+                                    <div id="service_dynamic">
+                                       <!-- <div class="form-group">
+                                            <label>Check-in Date*</label>
+                                            <input type="date" class="form-control" name="chkIn" id="chkIn" value={{ petDetails.Pet_checkIn }} disabled="True" >
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Check-out Date*</label>
+                                            <input type="date" class="form-control" name="chkOut" id="chkOut" value={{ petDetails.Pet_checkOut }}>                                        
+                                        </div>                                        
+
+                                        <div class="form-group mx-sm-3">
+                                            <label>Amount Per Day *</label>
+                                            <input type="text" class="form-control" name="amoutPerDay" id="amoutPerDay" placeholder="Amount per Day" >
+                                        </div>-->
+                                    </div>
+                                    <div id="add_services">
+
+                                    </div>
+                                    <div class="form-group mx-sm-3">
+                                        <a class="btn-sm" id="add_more"><i class="fas fa-plus-circle"></i> Add service</a>
+                                        <a class="btn-sm" id="remove_more"><i class="fas fa-trash-alt"></i>Remove</a>
+                                        
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label>Discount / Coupon</label>
+                                        <input type="text" class="form-control" name="discount" id="discount"  placeholder="Discount" >
+                                    </div>
+                                    
+                                    
+                                    <div class="form-group">
+                                        <label>Service Charge</label>
+                                        <input type="text" class="form-control" name="serviceCharge" id="serviceCharge"  placeholder="Service Charge" >
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Total Amount*</label>
+                                        <input type="text" class="form-control" name="total_amount" id="total_amount" value="{{ petDetails.total_amount }}" disabled="True" >
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Paid Amount*</label>
+                                        <input type="text" class="form-control" name="advance_amount" id="advance_amount" value="{{petDetails.advance_amount}}" >
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Pending Amount*</label>
+                                        <input type="text" class="form-control" name="pending_amount" id="pending_amount" disabled="True" value="{{petDetails.pending_amount}}">
+                                    </div>
+
+                                    <div class="btn-outer">
+                                        <button type="submit" onclick="event.preventDefault(); validate_form();" class="btn default-btn w-100 hover-effect" style="border-radius: 100px;">Generate</button>
+                                    </div>                                   
+                                </div>
+                            </div>
+                            
+                        </div> 
+                        
+                                               
+                    </div>
+                </form>
+            </section> 
+        </div>
+
+        <!-- Latest compiled JavaScript -->
+        
+        <script src="{% static 'js/jquery-3.6.0.min.js' %}"></script>
+        <script src="{% static 'js/popper.min.js' %}"></script>
+        <script src="{% static 'js/bootstrap.min.js' %}"></script>
+        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+        <script src="{% static 'js/owl.carousel.js' %}"></script>
+        <script src="{% static 'js/carousel.js' %}"></script>
+        <script src="{% static 'js/counter.js' %}"></script>
+        <script src="{% static 'js/animation.js' %}"></script>
+        <script src="{% static 'js/video-popup.js' %}"></script>
+        <script src="{% static 'js/video-section.js' %}"></script>
+        <script src="{% static 'js/remove-product.js' %}"></script>
+        <script src="{% static 'js/generateBill.js' %}"></script>
+        
+    </body>
+</html>

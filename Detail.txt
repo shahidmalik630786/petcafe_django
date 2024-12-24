@@ -1,0 +1,23 @@
+194.238.22.58
+root
+P@ssword2024!@
+
+dev directory: /var/www/html/dev_petcafe
+prod: /var/www/html/petcafe
+
+user: dev_user
+pass: dev_user@12
+
+
+Mysql 
+user:- root 
+pwd:- root@123
+
+
+admin credentials
+
+username :- admin
+email:- admin@gmail.com
+password:- admin3122024
+
+

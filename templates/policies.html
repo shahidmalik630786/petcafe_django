@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+    <head>
+        <title>Terms | Barks & Beans</title>
+        <link rel="icon" type="image/x-icon" href="{% static '/images/favicon/BB_Favicon.ico' %}">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+        <meta charset="utf-8">
+        <link rel="stylesheet"  href="{% static 'bootstrap/bootstrap.min.css' %} ">
+        <link rel="stylesheet" href="{% static 'js/bootstrap.min.js' %} ">
+        <!-- Font Awesome link -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+        <!-- StyleSheet link CSS -->
+        <link href="{% static 'css/style.css' %} " rel="stylesheet" type="text/css">
+        <link href="{% static 'css/mediaqueries.css' %}" rel="stylesheet" type="text/css">
+        <link href="{% static 'css/owl.carousel.min.css' %}" rel="stylesheet" type="text/css">
+        <link href="{% static 'css/owl.theme.default.min.css' %}" rel="stylesheet" type="text/css">
+        <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.css">
+       
+
+        
+    </head>
+    <body>
+        <div class="banner-section-outer">
+            {% include 'header.html' %}
+            <section class="banner-section">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-5 col-md-12 col-sm-12 col-12 text-lg-left text-center">
+                            <div class="banner-section-content">                              
+                                <h2 data-aos="fade-up"> >>> Policies  <<< </h2>
+                                <p data-aos="fade-right">
+                                    *  If the boarding is cancelled or changed 30 days before check in -- Full Refund/No Charge.                     
+                                </p>
+                                <p data-aos="fade-right">
+                                    *  If the boarding is cancelled or changed 15 days before check in -- 75% Refund or 10% Date change Penalty Fee.
+                                </p>
+                                <p data-aos="fade-right">
+                                    * If the boarding is cancelled or changed 7 days before check in --50% REfund or 25% Date change Penalty Fee.
+                                </p>
+                                <p data-aos="fade-right">
+                                    * If the boarding is cancelled or changed 0-6 days before check in -- No Refund or 50% Date change Penaly Fee.
+                                </p>
+                                <p data-aos="fade-right">
+                                    * If Pet is picked up in between the boarding periods -- No Refund for rest of the amount.
+                                </p>                            
+                            </div>
+                            <br><br>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <!-- Latest compiled JavaScript -->
+        <script src="{% static 'js/jquery-3.6.0.min.js' %}"></script>
+        <script src="{% static 'js/popper.min.js' %}"></script>
+        <script src="{% static 'js/bootstrap.min.js' %}"></script>
+        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+        <script src="{% static 'js/owl.carousel.js' %}"></script>
+        <script src="{% static 'js/carousel.js' %}"></script>
+        <script src="{% static 'js/counter.js' %}"></script>
+        <script src="{% static 'js/animation.js' %}"></script>
+        <script src="{% static 'js/video-popup.js' %}"></script>
+        <script src="{% static 'js/video-section.js' %}"></script>
+        <script src="{% static 'js/remove-product.js' %}"></script>
+    </body>
+    </html>

@@ -1,0 +1,162 @@
+{% extends 'staff/dashboard.html' %}
+{% load static %}
+
+        {% block content %}
+
+        <div class="card" onload="getStaffProfile('{{ user.staff_profile.first.id }}')" >
+            <div class="card-body">
+                <h5 class="card-title">Profile</h5>
+                <ul class="list-group">
+                    <li class="list-group-item d-flex" ><strong>Name:</strong> <div class="mx-1" id="name_profile"></div></li>
+                    <li class="list-group-item d-flex" ><strong>Email:</strong> <div class="mx-1" id="email_profile"></div> </li>
+                    <li class="list-group-item d-flex" ><strong>Phone Number:</strong> <div class="mx-1" id="phonenumber_profile"></div></li>
+                    <li class="list-group-item d-flex" ><strong>Address:</strong> <div class="mx-1" id="address_profile"></div></li>
+                </ul>
+
+                <button type="button" class="btn btn-warning mt-3 mx-1" data-id="${row.id}" onclick="getStaff('{{ user.staff_profile.first.id }}')" data-bs-toggle="modal" data-bs-target="#updateModal">Edit Profile<i class="bi bi-pencil-square mx-2"></i></button>
+                
+                <button type="button" class="btn btn-warning mt-3 mx-1" data-bs-toggle="modal" data-bs-target="#updatePasswordModal" >Change Password</button>
+            </div>
+        </div>
+        <script>
+            window.onload = function() {
+                getStaffProfile('{{ user.staff_profile.first.id }}');
+            };
+        </script>
+        {% endblock %}
+
+        {% block partnership_model %}
+        <!-- Update Modal -->
+        <div class="modal fade" id="updateModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-md partner-modal">
+                <div class="modal-content">
+                    <div class="modal-body p-0">
+                        <div class="modal-body contact_info_section">
+                            <div class="contact_info_form_content" style="padding-top: 30px;">
+                                <div class="container-fluid">
+                                    <div style="padding: 0px;">
+                                        <div class="d-flex mb-2">
+                                            <h6>Update Profile</h6>
+                                        </div>
+                                        <!-- <p class="text-size-18">We will get back to you soon.</p> -->
+                                        <form id="updateForm" method="post">
+                                            {% csrf_token %}
+                                            <div class="row">
+                                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                                    <div class="form-group mb-0">
+                                                        <input type="text" name="name" placeholder="Name" 
+                                                            autofocus required aria-describedby="id_name_helptext" 
+                                                            id="id_name1" >
+                                                        <div class="main-error">
+                                                            <span class="error mb-1 fs-6" id="nameError1" style="color: red;"></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <div class="form-group mb-0">
+                                                        <input type="email" name="email" placeholder="Email Address" 
+                                                            autofocus required aria-describedby="id_emails_helptext" 
+                                                            id="id_email1" >
+                                                        <div class="main-error">
+                                                            <span class="error mb-1 fs-6" id="emailError1" style="color: red;"></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <div class="form-group mb-0">
+                                                        <input type="tel" name="phone" placeholder="Phone Number" 
+                                                            autofocus required aria-describedby="id_phone_helptext" 
+                                                            id="id_phone1" >
+                                                        <div class="main-error">
+                                                            <span class="error mb-1 fs-6" id="phoneError1" style="color: red;"></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <div class="form-group mb-0">
+                                                        <textarea name="address1" cols="40" rows="4" placeholder="Address" 
+                                                                style="resize: vertical;" 
+                                                                aria-describedby="id_address_helptext" 
+                                                                id="id_address1"></textarea>
+                                                        <div class="main-error">
+                                                            <span class="error mb-1 fs-6" id="addressError1" style="color: red;"></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div id="status" class="main-error fs-6 text-success"></div>
+                                            </div>
+                                            <div class="btn_wrapper">
+                                                <button type="submit" id="partnershipFormSubmit" class="default-btn">Update</button>
+                                                <button id="closebutton1" type="button" class="default-btn mt-3" data-bs-dismiss="modal">Close</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+         <!-- Update Password Modal -->
+         <div class="modal fade" id="updatePasswordModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-md partner-modal">
+                <div class="modal-content">
+                    <div class="modal-body p-0">
+                        <div class="modal-body contact_info_section">
+                            <div class="contact_info_form_content" style="padding-top: 30px;">
+                                <div class="container-fluid">
+                                    <div style="padding: 0px;">
+                                        <div class="d-flex mb-2">
+                                            <h6>Update Password</h6>
+                                        </div>
+                                        <!-- <p class="text-size-18">We will get back to you soon.</p> -->
+                                        <form id="updatePasswordForm" method="post" data-email="{{ user.staff_profile.first.email }}">
+                                            {% csrf_token %}
+                                            <div class="row">
+                                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                                    <div class="form-group mb-0">
+                                                        <input type="password" name="password1" placeholder="New Password" 
+                                                            autofocus required aria-describedby="id_password1_helptext" 
+                                                            id="id_password1">
+                                                        <div class="main-error">
+                                                            <span class="error mb-1 fs-6" id="password1Error" style="color: red;"></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <div class="form-group mb-0">
+                                                        <input type="password" name="password2" placeholder="Confirm Password" 
+                                                            autofocus required aria-describedby="id_password2_helptext" 
+                                                            id="id_password2">
+                                                        <div class="main-error">
+                                                            <span class="error mb-1 fs-6" id="password2Error" style="color: red;"></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="btn_wrapper">
+                                                <button type="submit" id="passwordChangeFormSubmit" class="default-btn" >Update</button>
+                                                <button id="closebutton2" type="button" class="default-btn mt-3" data-bs-dismiss="modal">Close</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    {% endblock %}
+      
+{% block extra_scripts %}
+<script src="{%static 'js/profile.js' %}"></script>
+{% endblock %}
+
+        

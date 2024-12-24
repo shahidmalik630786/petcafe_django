@@ -1,0 +1,211 @@
+{% extends 'partnership/partnership_dashboard.html' %}
+{% load static %}
+
+{% block title %}
+<div class="d-flex mt-4 mx-4 justify-content-between align-items-center">
+    <h2 class="entity-title-margin">Entity Form</h2>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="modal-body contact_info_section w-90 m-3">
+    <div class="contact_info_form_content" style="padding-top: 30px;">
+        <div class="container-fluid">
+            <div style="padding: 0px;">
+                <form id="entityForm" method="post">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            <div class="form-group">
+                                <h3 class="text-white">Mark Our Calendar for
+                                    <select class="form-control bg-white" name="bookingOpt" id="bookingOpt" required>
+                                        <option value="">-- select one --</option>
+                                        <option value="boarding">Boarding</option>
+                                        <option value="training">Training</option>
+                                    </select>
+                                </h3>
+                                <div class="main-error">
+                                    <span class="error mb-1 fs-6 ml-3" id="bookingError"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <label class="text-white fw-bold" for="parName">Parent Name*</label>
+                            <input type="text" class="form-control" name="parName" id="parName" placeholder="Parent Name" required>
+                            <div class="main-error">
+                                <span class="error mb-1 fs-6 ml-3" id="parNameError"></span>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <label class="text-white fw-bold" for="petName">Pet Name*</label>
+                            <input type="text" class="form-control" name="petName" id="petName" placeholder="Pet Name" required>
+                            <div class="main-error">
+                                <span class="error mb-1 fs-6 ml-3" id="petNameError"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <label class="text-white fw-bold" for="email">Email address*</label>
+                            <input type="email" class="form-control" name="email" id="email" placeholder="Email" required>
+                            <div class="main-error">
+                                <span class="error mb-1 fs-6 ml-3" id="emailError"></span>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <label class="text-white fw-bold" for="phNum">Phone Number*</label>
+                            <input type="tel" class="form-control" name="phNum" id="phNum" placeholder="Phone Number" required>
+                            <div class="main-error">
+                                <span class="error mb-1 fs-6 ml-3" id="phNumError"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-12">
+                            <label class="text-white fw-bold" for="address">Address*</label>
+                            <textarea class="form-control" name="address" id="address" placeholder="Address" required></textarea>
+                            <div class="main-error">
+                                <span class="error mb-1 fs-6 ml-3" id="addressError"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <label class="text-white fw-bold" for="Pet_checkIn">Check-in Date*</label>
+                            <input type="date" class="form-control" name="Pet_checkIn" id="Pet_checkIn" min="{{ today|date:'Y-m-d' }}" required>
+                            <div class="main-error">
+                                <span class="error mb-1 fs-6 ml-3" id="Pet_checkInError"></span>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <label class="text-white fw-bold" for="Pet_checkOut">Check-out Date*</label>
+                            <input type="date" class="form-control" name="Pet_checkOut" id="Pet_checkOut" min="{{ today|date:'Y-m-d' }}" required>
+                            <div class="main-error">
+                                <span class="error mb-1 fs-6 ml-3" id="Pet_checkOutError"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <label class="text-white fw-bold" for="petBreed">Pet Breed*</label>
+                            <input type="text" class="form-control" name="petBreed" id="petBreed" required>
+                            <div class="main-error">
+                                <span class="error mb-1 fs-6 ml-3" id="petBreedError"></span>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <label class="text-white fw-bold" for="petDOB">Pet DOB*</label>
+                            <input type="date" class="form-control" name="petDOB" id="petDOB" max="{{ today|date:'Y-m-d' }}" required>
+                            <div class="main-error">
+                                <span class="error mb-1 fs-6 ml-3" id="petDOBError"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <label class="text-white fw-bold" for="petSize">Pet Size*</label>
+                            <select class="form-control bg-white" name="petSize" id="petSize" required>
+                                <option value="">-- select one --</option>
+                                <option value="Small">Small</option>
+                                <option value="Medium">Medium</option>
+                                <option value="Large">Large</option>
+                            </select>
+                            <div class="main-error">
+                                <span class="error mb-1 fs-6 ml-3" id="petSizeError"></span>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <label class="text-white fw-bold" for="petBehave">Pet Behaviour*</label>
+                            <select class="form-control bg-white" name="petBehave" id="petBehave" required>
+                                <option value="">-- select one --</option>
+                                <option value="Friendly">Friendly</option>
+                                <option value="Aggressive">Aggressive</option>
+                                <option value="Protective">Protective</option>
+                                <option value="Curious">Curious</option>
+                                <option value="Obedient">Obedient</option>
+                                <option value="Stubborn">Stubborn</option>
+                                <option value="Playful">Playful</option>
+                                <option value="Outgoing">Outgoing</option>
+                                <option value="Fearless">Fearless</option>
+                            </select>
+                            <div class="main-error">
+                                <span class="error mb-1 fs-6 ml-3" id="petBehaveError"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <label class="text-white fw-bold" for="per_day_charge">Per Day Charge*</label>
+                            <input type="number" class="form-control" name="per_day_charge" id="per_day_charge" min="0" value="0" required>
+                            <div class="main-error">
+                                <span class="error mb-1 fs-6 ml-3" id="perdayChargeError"></span>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <label class="text-white fw-bold" for="pick_up_charge">PickUp / Drop Charge</label>
+                            <input type="number" class="form-control" name="pick_up_charge" id="pick_up_charge" min="0" value="0" required>
+                            <div class="main-error">
+                                <span class="error mb-1 fs-6 ml-3" id="pickupChargeError"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <label class="text-white fw-bold" for="grooming_charge">Grooming Charge</label>
+                            <input type="number" class="form-control" name="grooming_charge" id="grooming_charge" min="0" value="0" required>
+                            <div class="main-error">
+                                <span class="error mb-1 fs-6 ml-3" id="groomingChargeError"></span>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <label class="text-white fw-bold" for="total_amount">Total Amount*</label>
+                            <input type="number" class="form-control" name="total_amount" id="total_amount" readonly value="0" required>
+                            <div class="main-error">
+                                <span class="error mb-1 fs-6 ml-3" id="totalAmountError"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tacbox p-0 bg-white rounded d-flex my-2"  style="position: relative; z-index: 1;">
+                        <div class="my-3 d-flex">
+                            <input type="checkbox" class="my-auto mx-4" name="aggreement" id="aggreement" required style="width: 18px; height: 18px;">
+                            <label for="aggreement" class="my-auto">
+                                I agree to the <a href="#">Terms and Conditions</a>
+                                <b>Barks & Beans and abide to the</b> <a href="#">Policies</a> of the center.
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="main-error">
+                        <span class="error mb-1 fs-6 ml-3" id="specialInstructError"></span>
+                    </div>
+                    
+                    <div class="row" id="status"></div>
+                    
+                    <div class="btn_wrapper">
+                        <button type="submit" class="default-btn">Submit</button>
+                        <button id="closebutton" type="button" class="default-btn mt-3" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block partnership_model %}
+{% endblock %}
+
+{% block extra_scripts %}
+<script src="{% static 'js/entity.js' %}"></script>
+{% endblock %}

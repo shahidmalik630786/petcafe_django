@@ -1,0 +1,110 @@
+{% load static %}
+<header>
+    <div class="main_header">
+        <div class="container">
+            <div class="middle-portion" style="margin-bottom: 10px;">                
+                <div class="row">
+                    <div class="col-lg-3 col-md-4 col-sm-6 col-12 d-sm-block d-none"> 
+                        <div class="contact_col">
+                            <ul class="list-unstyled">
+                                <li class="icons"><a href="https://www.youtube.com/@BarksnBeans"><i class="fa-brands fa-youtube fa-2x -f hover-effect" aria-hidden="true"></i></a></li>
+                                <li class="icons"><a href="#"><i class="fa-brands fa-twitter fa-2x hover-effect" aria-hidden="true"></i></a></li>
+                                <li class="icons"><a href="https://www.instagram.com/barks.and.beans"><i class="fa-brands fa-instagram fa-2x mr-0 hover-effect" aria-hidden="true"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>                
+            </div>
+        </div>        
+        <div class="container-fluid">            
+            <nav class="navbar navbar-expand-lg navbar-light p-0">
+                <a class="navbar-brand" href="/"><figure class="mb-0"><img src="{% static 'images/BB_LOGO.png' %}" alt="" class="img-fluid"></figure></a>
+                <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+                <span class="navbar-toggler-icon"></span>
+                <span class="navbar-toggler-icon"></span>
+                </button>
+                
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav">
+                        <li class="nav-item active">
+                            <a class="nav-link" style="white-space: nowrap;" href="/">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" style="white-space: nowrap;" href="/about">About us</a>
+                        </li>
+                        
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle dropdown-color navbar-text-color" style="white-space: nowrap;" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+                                aria-expanded="false"> Services </a>
+                            <div class="dropdown-menu drop-down-content">
+                                <ul class="list-unstyled drop-down-pages">
+                                    <li class="nav-item">
+                                        <a class="dropdown-item nav-link" href="/board">Pet Boarding</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="dropdown-item nav-link" href="#">Pet Grooming</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="dropdown-item nav-link" href="/train">Pet Training</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="dropdown-item nav-link" href="#">Pet Pickup/Drop</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="dropdown-item nav-link" href="#">Pet Birthday Celebration</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" style="white-space: nowrap;" href="/gallery">Gallery</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" style="white-space: nowrap;" href="{% url 'accounts:register' %}">Partnership</a>
+                        </li>
+
+                        {% if user.is_superuser %}
+                        <li class="nav-item">
+                            <a class="nav-link" style="white-space: nowrap;" href="/fetch">Dashboard</a>
+                        </li>
+                        {% elif user.staff_profile.first.is_active %}
+                        <li class="nav-item">
+                            <a class="nav-link" style="white-space: nowrap;" href="/fetch">Dashboard</a>
+                        </li>
+                        {% else %}
+                            {% if user.is_authenticated %}
+                            <li class="nav-item ">
+                                <a class="nav-link" style="white-space: nowrap;" href="{% url 'accounts:partnership' %}">Profile</a>
+                            </li>
+                            {% endif %}
+                        {% endif %}
+
+                        {% if user.is_authenticated %}
+                        <li class="nav-item">
+                            <form action="{% url 'accounts:logout' %}" method="post" style="display: inline;">
+                                {% csrf_token %}
+                                <button type="submit" class="nav-link" style="background: none; border: none; padding: 0; cursor: pointer; margin-left: 20px;">
+                                    Logout
+                                </button>
+                            </form>
+                        </li>
+                        {% else %}
+
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'accounts:login' %}">Login</a>
+                        </li>
+                        {% endif %}
+                        
+                        <li class="nav-item">
+                            <a class="nav-link default-btn contact_us" href="/contact">Contact Us</a>
+                        </li> 
+                    </ul>                   
+                    
+                </div> 
+            </nav>
+        </div>
+    </div>
+</header>

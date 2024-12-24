@@ -1,0 +1,149 @@
+{% extends 'staff/dashboard.html' %}
+{% load static %}
+
+        {% block content %}
+
+        <div class="card" onload="getStaffProfile('{{ user.staff_profile.first.id }}')" >
+            <div class="card-body">
+                <h5 class="card-title">Partner Details</h5>
+                <ul class="list-group">
+                    <li class="list-group-item d-flex" ><strong>Parent Name:</strong> <div class="mx-2" id="nameProfile"></div></li>
+                    <li class="list-group-item d-flex" ><strong>Pet Name:</strong> <div class="mx-2" id="emailProfile">{{data.Pet_Name}}</div> </li>
+                    <li class="list-group-item d-flex" ><strong>Phone Number:</strong> <div class="mx-2" id="phoneNumProfile">{{data.Phone_Number}}</div></li>
+                    <li class="list-group-item d-flex" ><strong>Pet Breed:</strong> <div class="mx-2" id="addressProfile">{{data.Pet_Breed}}</div></li>
+                    <li class="list-group-item d-flex" ><strong>Pet Check-in:</strong> <div class="mx-2" id="petCheckIn">{{data.Pet_checkIn}}</div></li>
+                    <li class="list-group-item d-flex" ><strong>Pet Breed:</strong> <div class="mx-2" id="PetCheckOut">{{data.Pet_Breed}}</div></li>
+                    <li class="list-group-item d-flex" ><strong>Payment Status:</strong><input type="checkbox" class="mx-2" id="paymentStatusCheckProfile"></li>
+                </ul>
+                <button type="button" class="btn btn-warning mt-3 mx-1" data-id="${row.id}" onclick="getStaff('{{ user.staff_profile.first.id }}')" data-bs-toggle="modal" data-bs-target="#updateModal">Edit Partner<i class="bi bi-pencil-square mx-2"></i></button>
+            </div>
+        </div>
+        <script>
+            window.onload = function() {
+                getStaffProfile('{{ user.staff_profile.first.id }}');
+            };
+        </script>
+        {% endblock %}
+        
+
+        {% block partnership_model %}
+        <!-- Update Modal -->
+        <div class="modal fade" id="updateModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-md partner-modal">
+                <div class="modal-content">
+                    <div class="modal-body p-0">
+                        <div class="modal-body contact_info_section">
+                            <div class="contact_info_form_content m-0" style="padding-top: 30px;">
+                                <div class="container-fluid">
+                                    <div style="padding: 0px;">
+                                        <div class="d-flex mb-2">
+                                            <h6>Update Partner Details</h6>
+                                        </div>
+                                        <form id="updateForm" method="post">
+                                            {% csrf_token %}
+                        
+                                            <div class="row mt-2">
+                                                <div class="col">
+                                                    <label class="text-white fw-bold" for="parName">Parent Name*</label>
+                                                    <input type="text" class="form-control" name="parName" id="parName" required>
+                                                    <div class="main-error">
+                                                        <span class="error mb-1 fs-6 ml-3" id="parNameError"></span>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <div class="row">
+                                                <div class="col">
+                                                    <label class="text-white fw-bold" for="petName">Pet Name*</label>
+                                                    <input type="text" class="form-control" name="petName" id="petName" required>
+                                                    <div class="main-error">
+                                                        <span class="error mb-1 fs-6 ml-3" id="petNameError"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col">
+                                                    <label class="text-white fw-bold" for="phoneNum">Phone Number</label>
+                                                    <input type="tel" name="phone" 
+                                                        autofocus required aria-describedby="id_phone_helptext" 
+                                                        id="phoneNum" >
+                                                    <div class="main-error">
+                                                        <span class="error mb-1 fs-6" id="phoneNumError" style="color: red;"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col">
+                                                    <label class="text-white fw-bold" for="petBreed">Pet Breed*</label>
+                                                    <input type="text" class="form-control" name="petBreed" id="petBreed" required>
+                                                    <div class="main-error">
+                                                        <span class="error mb-1 fs-6 ml-3" id="petBreedError"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col">
+                                                    <label class="text-white fw-bold" for="Pet_checkIn">Check-in Date*</label>
+                                                    <input type="date" class="form-control" name="Pet_checkIn" id="Pet_checkIn" min="{{ today|date:'Y-m-d' }}"  required>
+                                                    <div class="main-error">
+                                                        <span class="error mb-1 fs-6 ml-3" id="Pet_checkInError"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col">
+                                                    <label class="text-white fw-bold" for="Pet_checkOut">Check-out Date*</label>
+                                                    <input type="date" class="form-control" name="Pet_checkOut" id="Pet_checkOut" min="{{ today|date:'Y-m-d' }}" required>
+                                                    <div class="main-error">
+                                                        <span class="error mb-1 fs-6 ml-3" id="Pet_checkOutError"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <!-- <div class="col">
+                                                    <label class="text-white fw-bold" for="Pet_checkOut">Payment Status*</label>
+                                                     <input type="checkbox" class="mx-2" {% if data.payment_status %} checked {% endif %} id="exampleCheck1">
+                                                </div> -->
+
+                                                <div class="col">
+                                                    <div class="form-group mb-0">
+                                                        <div class="mb-3 d-flex flex-row-reverse">
+                                                            <div>
+                                                                <label class="form-check-label mx-1 text-light fw-bold" for="paymentStatusCheck">Payment Status*</label>
+                                                                <input style="height: 20px; width: 20px;" 
+                                                                       type="checkbox" name="status" 
+                                                                       id="paymentStatusCheck"  />
+                                                            </div>
+                                                        </div>
+                                                        <div class="main-error">
+                                                            <span class="error mb-1 fs-6" id="statusError" style="color: red;"></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div id="status" class="main-error fs-6 text-success"></div>
+                                            </div>
+                                            <div class="btn_wrapper">
+                                                <button type="submit" id="partnershipFormSubmit" class="default-btn" data-id="">Update</button>
+                                                <button id="closebutton1" type="button" class="default-btn mt-3" data-bs-dismiss="modal">Close</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endblock %}
+      
+{% block extra_scripts %}
+<script src="{%static 'js/entity_detail.js' %}"></script>
+{% endblock %}
+
+        

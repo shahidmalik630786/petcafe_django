@@ -1,0 +1,121 @@
+{% extends 'staff/dashboard.html' %}
+{% load static %}
+{% block title %}
+<div class="row">
+    <span class="ml-4 mt-3 fs-6 fw-bold">Fetch</span>
+  </div>
+
+{% endblock %}
+{% block content %}
+        <!-- TABLE SECTION STARTED --> 
+        <section class="banner-section">
+            <div class="container-fluid">
+                <div class="rows">
+                    <div class="text-lg-left text-center">
+                        <div class="banner-section-content">
+                            <div class="table-responsive-lg">
+                                <div class="table-scrollbar-container">
+                                    <table class="table table-bordered display m-0 bg-white" width="100%">
+                                        <thead>
+                                            <tr ><th class="custom_colour">Pet Name </th>
+                                                <th class="custom_colour" align="center">Parent Name</th>
+                                                <th class="custom_colour">Phone Number</th>
+                                                <th class="custom_colour">Breed</th>
+                                                <th class="custom_colour">Check-in Date</th>
+                                                <th class="custom_colour">Check-out Date</th>
+                                                <th class="custom_colour">status</th>
+                                                <th class="custom_colour">Payment</th> </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for user in userdata %}
+                                                {% if user.boarding_status != "BOOKED" %}
+                                                    {% if user.Booking_Option == "training" %}
+                                                    <tr class="training_row" style="background-color:#FF0000; color:white;">
+                                                    {% else %}
+                                                    <tr>
+                                                    {% endif %}
+                                                        
+                                                        <td class="custom_colour">{{ user.Pet_Name }}</td>
+                                                        <td class="custom_colour">{{ user.Parent_Name }}</td>
+                                                        <td class="custom_colour">{{ user.Phone_Number }}</td>
+                                                        <td class="custom_colour">{{ user.Pet_Breed }}</td>
+                                                        <td class="custom_colour">{{ user.Pet_checkIn }}</td>
+                                                        <td class="custom_colour">{{ user.Pet_checkOut }}</td>
+                                                        <td class="custom_colour">{{ user.boarding_status }} </td>                                        
+                                                        <td class="custom_colour">
+                                                            {% if user.pending_amount == 0 and user.total_amount == user.advance_amount and user.total_amount > 0 %}
+                                                            <center><span class="dot_green"></span></center>
+                                                            {% endif %}
+                                                            {% if user.pending_amount == user.total_amount and user.advance_amount == 0 and user.state_of_board != "InHouse" %}
+                                                            <center><span class="dot_red"></span></center>
+                                                            {% endif %}
+                                                            {% if user.advance_amount > 0 and user.advance_amount < user.total_amount %}
+                                                            <center><span class="dot_yellow"></span></center>
+                                                            {% endif %} 
+                                                            {% if user.state_of_board == "InHouse" and user.advance_amount == 0  %}
+                                                            <center><span class="dot_cyan"></span></center>
+                                                            {% endif %}
+                                                        </td>
+                                                        <td class="custom_colour"><button class="button"  onclick="edit_details( '{{ user.id }}' )" >Edit</button></td>
+                                                    </tr>
+                                                {% endif %}
+                                            {% endfor %} 
+                                            
+                                            {% for user in userdata %}
+                                                {% if user.boarding_status == "BOOKED" %}
+                                                    <tr class="booked_row" style="background-color:#605d5d !important; color:white !important;">
+                                                        <td class="custom_colour">{{ user.Pet_Name }}</td>
+                                                        <td class="custom_colour">{{ user.Parent_Name }}</td>
+                                                        <td class="custom_colour">{{ user.Phone_Number }}</td>
+                                                        <td class="custom_colour">{{ user.Pet_Breed }}</td>
+                                                        <td class="custom_colour">{{ user.Pet_checkIn }}</td>
+                                                        <td class="custom_colour">{{ user.Pet_checkOut }}</td>
+                                                        <td class="custom_colour">{{ user.boarding_status }} </td>                                        
+                                                        <td class="custom_colour">
+                                                            {% if user.pending_amount == 0 and user.total_amount == user.advance_amount and user.total_amount > 0 %}
+                                                            <center><span class="dot_green"></span></center>
+                                                            {% endif %}
+                                                            {% if user.pending_amount == user.total_amount and user.advance_amount == 0 and user.state_of_board != "InHouse" %}
+                                                            <center><span class="dot_red"></span></center>
+                                                            {% endif %}
+                                                            {% if user.advance_amount > 0 and user.advance_amount < user.total_amount %}
+                                                            <center><span class="dot_yellow"></span></center>
+                                                            {% endif %} 
+                                                            {% if user.state_of_board == "InHouse" and user.advance_amount == 0  %}
+                                                            <center><span class="dot_cyan"></span></center>
+                                                            {% endif %}
+                                                        </td>
+                                                        <td><button class="button"  onclick="edit_details( '{{ user.id }}' )" >Edit</button></td>
+                                                    </tr>
+                                                {% endif %}
+                                            {% endfor %}
+                    
+                                        </tbody>
+                                    </table>
+                                </div> 
+                            </div>
+                        </div> 
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- TABLE SECTION END -->
+
+        <!-- Latest compiled JavaScript -->
+        {% endblock %}
+
+        {% block extra_scripts %}
+        <script src="{% static 'js/booking.js' %}"></script>
+        <script src="{% static 'js/jquery-3.6.0.min.js' %}"></script>
+        <script src="{% static 'js/popper.min.js' %}"></script>
+        <script src="{% static 'js/bootstrap.min.js' %}"></script>
+        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+        <script src="{% static 'js/owl.carousel.js' %}"></script>
+        <script src="{% static 'js/carousel.js' %}"></script>
+        <script src="{% static 'js/counter.js' %}"></script>
+        <script src="{% static 'js/animation.js' %}"></script>
+        <script src="{% static 'js/video-popup.js' %}"></script>
+        <script src="{% static 'js/video-section.js' %}"></script>
+        <script src="{% static 'js/remove-product.js' %}"></script>
+        {% endblock %}
+        

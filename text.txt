@@ -1,0 +1,42 @@
+petData
+
+
+changes
+
+1) in view  url model and partnership.html api html file for it
+
+
+2) account module css partnership.css 
+
+main url changes
+template  tags 
+
+
+in settings
+
+register login .html
+
+added in settings
+
+'rest_framework.authentication.BasicAuthentication'
+
+
+imp
+
+change in dashboard.html 
+
+added i style 
+
+      table.dataTable tbody tr {
+          background-color: transparent;
+      }
+      table.dataTable.display tbody tr.odd>.sorting_1, table.dataTable.order-column.stripe tbody tr.odd>.sorting_1 {
+       background-color: transparent;
+      }
+      table.dataTable.stripe tbody tr.odd, table.dataTable.display tbody tr.odd{
+        background-color: transparent;
+      }
+      table.dataTable.display tbody tr.even>.sorting_1, table.dataTable.order-column.stripe tbody tr.even>.sorting_1 {
+        background-color: transparent;
+      }
+

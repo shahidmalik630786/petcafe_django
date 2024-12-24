@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+    <head>
+        <title>Fetch | Barks & Beans</title>
+        <link rel="icon" type="image/x-icon" href="{% static '/images/favicon/BB_Favicon.ico' %}">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+        <meta charset="utf-8">
+        <link rel="stylesheet"  href="{% static 'bootstrap/bootstrap.min.css' %} ">
+        <link rel="stylesheet" href="{% static 'js/bootstrap.min.js' %} ">
+        <!-- Font Awesome link -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+        <!-- StyleSheet link CSS -->
+        <link href="{% static 'css/style.css' %} " rel="stylesheet" type="text/css">
+        <link href="{% static 'css/mediaqueries.css' %}" rel="stylesheet" type="text/css">
+        <link href="{% static 'css/owl.carousel.min.css' %}" rel="stylesheet" type="text/css">
+        <link href="{% static 'css/owl.theme.default.min.css' %}" rel="stylesheet" type="text/css">
+        <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.css">
+        <style>
+            .dot_green {
+                height: 25px;
+                width: 25px;
+                background-color: #0f0;
+                border-radius: 50%;
+                display: inline-block;
+            }
+            .dot_cyan{
+                height: 25px;
+                width: 25px;
+                background-color: #0ff;
+                border-radius: 50%;
+                display: inline-block;
+            }
+            .dot_red {
+                height: 25px;
+                width: 25px;
+                background-color: #f00;
+                border-radius: 50%;
+                display: inline-block;
+            }
+            .dot_yellow{
+                height: 25px;
+                width: 25px;
+                background-color: #ff0;
+                border-radius: 50%;
+                display: inline-block;
+            }
+        </style>
+        
+    </head>
+    <body>        
+            
+        <!-- TABLE SECTION STARTED --> 
+        <section class="banner-section">
+            <div class="container-fluid">
+                <div class="rows">
+                    <div class="text-lg-left text-center">
+                        <div class="banner-section-content">
+                            <table class="table">
+                                <thead>
+                                    <tr><th>Pet Name </th><th align="center">Parent Name</th> <th>Phone Number</th><th>Breed</th><th>Check-in Date</th><th>Check-out Date</th><th>status</th><th>Payment</th> </tr>
+                                </thead>
+                                <tbody>
+                                    {% for user in userdata %}
+                                     {% if user.Booking_Option == "training" %}
+                                        <tr style="background-color:#FF0000; color:white;">
+                                        {% else %}
+                                        <tr>
+                                        {% endif %}
+                                            
+                                            <td>{{ user.Pet_Name }}</td>
+                                            <td>{{ user.Parent_Name }}</td>
+                                            <td>{{ user.Phone_Number }}</td>
+                                            <td>{{ user.Pet_Breed }}</td>
+                                            <td>{{ user.Pet_checkIn }}</td>
+                                            <td>{{ user.Pet_checkOut }}</td>
+                                            <td>{{ user.boarding_status }} </td>                                        
+                                            <td>
+                                                {% if user.pending_amount == 0 and user.total_amount == user.advance_amount and user.total_amount > 0 %}
+                                                <center><span class="dot_green"></span></center>
+                                                {% endif %}
+                                                {% if user.pending_amount == user.total_amount and user.advance_amount == 0 and user.state_of_board != "InHouse" %}
+                                                <center><span class="dot_red"></span></center>
+                                                {% endif %}
+                                                {% if user.advance_amount > 0 and user.advance_amount < user.total_amount %}
+                                                <center><span class="dot_yellow"></span></center>
+                                                {% endif %} 
+                                                {% if user.state_of_board == "InHouse" and user.advance_amount == 0  %}
+                                                <center><span class="dot_cyan"></span></center>
+                                                {% endif %}
+                                            </td>
+                                            <td><button class="button"  onclick="edit_details( '{{ user.id }}' )" >Edit</button></td>
+                                    </tr>
+                                    {% endfor %}                                    
+            
+                                </tbody>
+                            </table>
+                        </div> 
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- TABLE SECTION END -->
+
+        <!-- Latest compiled JavaScript -->
+        <script src="{% static 'js/booking.js' %}"></script>
+        <script src="{% static 'js/jquery-3.6.0.min.js' %}"></script>
+        <script src="{% static 'js/popper.min.js' %}"></script>
+        <script src="{% static 'js/bootstrap.min.js' %}"></script>
+        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+        <script src="{% static 'js/owl.carousel.js' %}"></script>
+        <script src="{% static 'js/carousel.js' %}"></script>
+        <script src="{% static 'js/counter.js' %}"></script>
+        <script src="{% static 'js/animation.js' %}"></script>
+        <script src="{% static 'js/video-popup.js' %}"></script>
+        <script src="{% static 'js/video-section.js' %}"></script>
+        <script src="{% static 'js/remove-product.js' %}"></script>
+        
+    </body>
+</html>

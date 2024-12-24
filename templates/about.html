@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <title>Home | Barks & Beans</title>
+    <link rel="icon" type="image/x-icon" href="{% static '/images/favicon/BB_Favicon.ico' %}">
+    <!-- /SEO Ultimate -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+    <meta charset="utf-8">
+    
+    <!--<link rel="manifest" href="./assets/images/favicon/manifest.json">-->
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <!--<meta name="msapplication-TileImage" content="/ms-icon-144x144.png">-->
+    <meta name="theme-color" content="#ffffff">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet"  href="{% static 'bootstrap/bootstrap.min.css' %} "> 
+    <!--<link rel="stylesheet" href="{% static 'js/bootstrap.min.js' %} ">-->
+    <!-- Font Awesome link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <!-- StyleSheet link CSS -->
+    <link href="{% static 'css/style.css' %} " rel="stylesheet" type="text/css">
+    <link href="{% static 'css/my_style.css' %} " rel="stylesheet" type="text/css">
+    <link href="{% static 'css/mediaqueries.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'css/owl.carousel.min.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'css/owl.theme.default.min.css' %}" rel="stylesheet" type="text/css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.css">
+</head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KWX99YCVES"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-KWX99YCVES');
+</script>
+
+<body> 
+    <a  class="whats-app" href="http://surl.li/qhtydo" target="_blank">
+        <!--<i class="fa fa-whatsapp my-float">-->
+            <img src="{% static 'images/navbar_whatsapp_img.png' %}" alt="" class="img-fluid hover-effect">
+        <!--</i>-->
+    </a>
+    <div class="banner-section-outer">
+        {% include 'header.html' %}
+        <section class="banner-section">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-5 col-md-12 col-sm-12 col-12 text-lg-left text-center">
+                        <div class="banner-section-content">
+                            <h2 data-aos="fade-up">Welcome to Barks & Beans !!</h2>
+                            
+                            <p data-aos="fade-right">At Barks & Beans, we are passionate about delivering exceptional service to your Furry Friend,
+                                 that make a difference in your life. Our journey began recently, with a mission to state your vision. 
+                                 Our motto is to be grown into a trusted name in the Pet industry, known for our commitment to quality, innovation, and customer satisfaction.
+                            </p>
+                            
+                        </div>
+                        <br><br>
+                        <div class="banner-section-image position-relative">
+                            <figure class="banner-image mb-0 left_right_shape">
+                                <img src="{% static 'images/pet_about2.png' %}" alt="" class="img-fluid">
+                            </figure>
+                        </div>
+                    </div>
+                    <div class="col-lg-7 col-md-12 col-sm-12 col-12">
+                        <div class="banner-section-image position-relative">
+                            <figure class="banner-image mb-0 left_right_shape">
+                                <img src="{% static 'images/pet_about.png' %}" alt="" class="img-fluid">
+                            </figure>
+                        </div>
+                        <br><br>
+                        <div class="banner-section-content">
+                            <h3>Our Story</h3>
+                                <p data-aos="fade-down">
+                                    Founded by group of people in Bangalore, Barks & Beans started with a simple idea: to provide leash-free environment to our Floppy friends including their second home. 
+                                    From humble beginnings, we have expanded our reach and capabilities, staying true to our core values of integrity, excellence and tranparent to our customers. 
+                                    Our team of dedicated professionals works tirelessly to ensure that we exceed your expectations in every way.
+                                </p>
+
+                            <h3>What We Do </h3>
+                            <p data-aos="fade-down">
+                                We specialize in Pet Services. Whether you are looking for pet boarding, pet training or pet grooming, we have got you covered. 
+                                Our services are designed with you in mind, blending functionality with style and innovation. 
+                                We take pride in using only the highest quality product for your pet and the experienced professionals to bring you the best services on the market.
+                            </p>
+                            <h3>Our Commitment</h3>
+                            <p data-aos="fade-left">At Barks & Beans, customer satisfaction is our top priority. 
+                                We believe in building lasting relationships with our clients, based on trust and mutual respect. 
+                                Our dedicated customer service team is always here to assist you, ensuring a seamless and enjoyable experience from start to finish.
+                            </p>
+                            <h3>Join Us On Our Journey</h3>
+                            <p data-aos="fade-left"><font color='red'>We invite you to explore our website and discover the difference that Barks & Beans can make. 
+                                Stay connected with us through our social media channels for the latest updates, news, and special offers. 
+                                Thank you for choosing Barks & Beans 
+                                we look forward to serving you!</font></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>    
+
+
+    <!-- Latest compiled JavaScript -->
+
+    <script src="{% static 'js/jquery-3.6.0.min.js' %}"></script>
+    <script src="{% static 'js/popper.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="{% static 'js/owl.carousel.js' %}"></script>
+    <script src="{% static 'js/carousel.js' %}"></script>
+    <script src="{% static 'js/counter.js' %}"></script>
+    <script src="{% static 'js/animation.js' %}"></script>
+    <script src="{% static 'js/video-popup.js' %}"></script>
+    <script src="{% static 'js/video-section.js' %}"></script>
+    <script src="{% static 'js/remove-product.js' %}"></script>
+    <script src="{% static 'js/dialogue.js' %}"></script>
+</body>
+</html>
