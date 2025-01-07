@@ -77,9 +77,9 @@ def partnership_status(request):
 def partnership_admin(request):
     return render(request, "accounts/admin.html")
 
-@admin_required
+@staff_active_required
 def cafe_admin(request):
-    return render(request, "cafe_admin.html")
+    return render(request, "staff/cafe_admin.html")
 
 @staff_active_required
 def fetch_details(request):    
@@ -299,7 +299,6 @@ def pet_boarding(request):
 def partnershipView(request):
     '''Partnership Registeration form'''
     try:
-        print( request.data.get('email'), request.data.get('emails'), request.data.get('name'))
         serializer = PartnershipSerializer(data = request.data)
         if serializer.is_valid():
             serializer.save()
@@ -376,36 +375,5 @@ class PartnershipView(LoginRequiredMixin, APIView):
         return paginator.get_paginated_response(serializer.data)
 
 
-class CafeView(LoginRequiredMixin,APIView):
-    '''Admin panel pagination of cafeview or inquiry table data'''
-    permission_classes = [IsAdmin]
-    def get(self, request):
-        # Fetching the queryset
-        queryset = cafe.objects.values("id", "Pet_Name", "Parent_Name", "Phone_Number", "Pet_Breed", "Pet_checkIn", "Pet_checkOut", "boarding_status")
-        # .filter(boarding_status__in=['boarded','BOOKED','inCampus'])
 
-        # Filtering based on search value from query parameters
-        search_value = request.query_params.get('search[value]', '')
-        if search_value:
-            queryset = queryset.filter(Parent_Name__icontains=search_value)
-
-        # Sorting 
-        order_column = request.query_params.get('order[0][column]', '')
-        order_dir = request.query_params.get('order[0][dir]', 'asc')
-        
-        # Sort only if name column is selected
-        if order_column == '1':  # Assuming name is at index 1
-            queryset = queryset.order_by('added_date' if order_dir == 'asc' else '-added_date')
-
-        # Initialize the paginator
-        paginator = CafePageNumberPagination()
-
-        # Paginate the queryset
-        paginated_queryset = paginator.paginate_queryset(queryset, request)
-
-        # Serialize the paginated data
-        serializer = CafeSerializer(paginated_queryset, many=True)
-
-        # Return the paginated response
-        return paginator.get_paginated_response(serializer.data)
     

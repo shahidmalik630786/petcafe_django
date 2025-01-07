@@ -30,8 +30,8 @@
                                             {% for user in userdata %}
                                                 {% if user.boarding_status != "BOOKED" %}
                                                     {% if user.Booking_Option == "training" %}
-                                                    <tr class="training_row" style="background-color:#FF0000; color:white;">
-                                                    {% else %}
+                                                    <tr class="training_row" style="background-color:#FF0000;">
+                                                    {% else %}  
                                                     <tr>
                                                     {% endif %}
                                                         

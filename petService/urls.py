@@ -34,11 +34,9 @@ urlpatterns = [
     path('staff/', views.staff, name="staff"),
     path('cafe_admin/', views.cafe_admin, name="cafe_admin"),
 
-
     #API
     path('api/partnership', views.partnershipView, name="partnership_form_submit"),
     path('api/get/partnership', views.PartnershipView.as_view(), name="partnership_get_data"),
-    path('api/get/cafe', views.CafeView.as_view(), name="cafe_get_data"),
     path('api/get/partnership/<int:pk>/', views.AdminPartnershipView.as_view(), name="get_partnership_data"),
     path('api/put/partnership/<int:pk>/', views.AdminPartnershipView.as_view(), name="update_partnership_data"),
 

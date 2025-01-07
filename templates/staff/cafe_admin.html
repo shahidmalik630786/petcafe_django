@@ -2,7 +2,19 @@
 {% load static %}
 
 {% block title %}
-<h2>Inquiry</h2>
+<div class="row">
+    <span class="ml-4 mt-3 fs-6 fw-bold">Fetch</span>
+</div>
+{% endblock %}
+
+{% block active_user %}
+<div class="mt-3">
+    <select id="partnershipStatus" class="form-select" aria-label="Default select example">
+        <option value="">All Users</option>
+        <option value="1">Payment Completed</option>
+        <option value="2">Payment Not Completed</option>
+    </select>
+</div>
 {% endblock %}
 
 {% block content %}
@@ -18,7 +30,9 @@
             <th>Pet Check-in</th>
             <th>Pet Check-out</th>
             <th>Status</th>
+            <th>Payment</th>
             <th>Action</th>
+
         </tr>
     </thead>
 </table>

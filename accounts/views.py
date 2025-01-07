@@ -26,10 +26,14 @@ from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated
 from datetime import datetime
 from petService.views import admin_required
+from petService.pagination import CafePageNumberPagination
+from .decorators import StaffActiveRequiredMixin
+import logging
 
 
 CustomUser = get_user_model()
 
+logger = logging.getLogger('accounts')
 
 class IsAdmin(BasePermission):
     def haspermission(self, request, view):
@@ -62,6 +66,10 @@ def partnership_service(request):
 def entity_details(request):
     return render(request, "partnership/entity_detail.html")
 
+@admin_required
+def services(request):
+    return render(request, "partnership/services.html")
+
 @api_view(['POST'])
 def login_view(request):
     '''This function is design for login of admin, partner and staff'''
@@ -70,10 +78,8 @@ def login_view(request):
     
     try:
         user = CustomUser.objects.get(email=email)
-        print(user.email, password)
         authenticated_user = authenticate(request, email=user.email, password=password)
         if authenticated_user is not None:
-            print(authenticated_user.email)
             try:
                 if authenticated_user.is_superuser:
                     login(request, authenticated_user)
@@ -402,6 +408,7 @@ class StaffView(LoginRequiredMixin, APIView):
 class PartnershipService(LoginRequiredMixin, APIView):
     '''Admin panel pagination of partnership data'''
     permission_classes = [IsAdmin]
+
     def get(self, request):
         try:
             email = request.user.email
@@ -423,8 +430,8 @@ class PartnershipService(LoginRequiredMixin, APIView):
             return paginator.get_paginated_response(serializer.data)
         except Exception as e:
             return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
     def post(self, request):
-        print(request.data.get('phNum'))
         try:
             # Validate required fields
             required_fields = [
@@ -512,14 +519,12 @@ class PartnershipService(LoginRequiredMixin, APIView):
         
         except Exception as e:
             # Log the error for debugging
-            print(f"Booking Error: {str(e)}")
             
             return Response({
                 'error': {'general': ['Booking failed. Please try again.']},
                 'status': 'error',
                 'details': str(e)
             }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-        
 
 
 @api_view(['GET'])
@@ -560,6 +565,7 @@ def entity_total_amount(request):
     except Exception as e:
         return Response({'error': f'An error occurred: {str(e)}'}, status=400)
     
+
 @api_view(['PUT'])
 @permission_classes([IsAuthenticated, IsAdmin])
 def update_entity_details(request, pk=None):
@@ -592,11 +598,42 @@ def update_entity_details(request, pk=None):
             "status": "error"
         }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
     
+
 @api_view(['GET'])
 @permission_classes([IsAuthenticated, IsAdmin])
-def get_entity_details(request, email=None):
+def get_service_details(request, email=None):
     try:
-        queryset = cafe.objects.filter(Email = email).first()
+        queryset = cafe.objects.filter(Email = email)
+        # search_value = request.query_params.get('search[value]', '')
+        
+        search_value = (request.GET.get('search', "").strip())
+        if search_value:
+            queryset = queryset.filter(Parent_Name__icontains=search_value)
+        if not queryset:
+            return Response(
+                {"msg": "Entity not found", "status": "error"},
+                status=status.HTTP_404_NOT_FOUND
+            )
+        
+        status = request.query_params.get('status', '')
+        if status == '1':  # Active
+            queryset = queryset.filter(payment_status=True)
+        elif status == '2':  # Deactive
+            queryset = queryset.filter(payment_status=False)
+
+        paginator = PageNumberPagination()
+        pagination_queryset = paginator.paginate_queryset(queryset, request)
+        serializer = CafeUpdateSerializer(pagination_queryset, many=True)
+        return paginator.get_paginated_response(serializer.data)
+    except Exception as e:
+        return Response({"msg":str(e), "status": "error"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated, IsAdmin])
+def get_entity_details(request, name=None):
+    try:
+        queryset = cafe.objects.filter(Parent_Name = name).first()
         if not queryset:
             return Response(
                 {"msg": "Entity not found", "status": "error"},
@@ -606,3 +643,28 @@ def get_entity_details(request, email=None):
         return Response(serializer.data)
     except Exception as e:
         return Response({"msg":str(e), "status": "error"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+    
+
+class CafeView(LoginRequiredMixin, StaffActiveRequiredMixin, APIView):
+    '''Admin panel pagination of cafeview or inquiry table data'''
+    permission_classes = [IsAdmin]
+    def get(self, request):
+        logger.info("Fetching cafe data for admin panel.")
+        queryset = cafe.objects.filter(boarding_status__in=['boarded','BOOKED','inCampus']).order_by('-boarding_status')
+        search_value = request.query_params.get('search[value]', '')
+        if search_value:
+            queryset = queryset.filter(Parent_Name__icontains=search_value)
+        # order_column = request.query_params.get('order[0][column]', '')
+        # order_dir = request.query_params.get('order[0][dir]', 'asc')
+        # if order_column == '1':  # Assuming name is at index 1
+        #     queryset = queryset.order_by('added_date' if order_dir == 'asc' else '-added_date')
+        status = request.query_params.get('status', '')
+        if status == '1':  # Active
+            queryset = queryset.filter(payment_status=True)
+        elif status == '2':  # Deactive
+            queryset = queryset.filter(payment_status=False)
+
+        paginator = CafePageNumberPagination()
+        paginated_queryset = paginator.paginate_queryset(queryset, request)
+        serializer = CafeSerializer(paginated_queryset, many=True)
+        return paginator.get_paginated_response(serializer.data)

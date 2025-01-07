@@ -12,6 +12,8 @@ urlpatterns = [
     path('profile/', views.profile, name='profile'),
     path('entity/', views.entity, name='entity'),
     path('partnership/', views.partnership_service, name='partnership'),
+    path('services/', views.services, name='services'),
+
 
     #API
     path('api/login/', views.login_view, name='login_api'),
@@ -21,14 +23,15 @@ urlpatterns = [
     path('api/put/staff/<int:pk>/', views.StaffView.as_view(), name="update_staff_data"),
     path('api/get/staff/<int:pk>', views.AdminStaffView.as_view(), name="get_staff_data"),
     path('api/update/password/<str:email>', views.AdminStaffView.as_view(), name="update_password_data"),
-
-    #partnership
     path('api/partnership/service/', views.PartnershipService.as_view(), name="partnership_service"),
     path('entity-booking/', views.PartnershipService.as_view(), name='entity_booking'),
     path('entity-total-charge/', views.entity_total_amount, name='entity-total-charge'),
     path('entity-detail/', views.entity_details, name='entity-detail'),
     path('update-entity-details/<int:pk>/', views.update_entity_details, name="update-entity-details"),
-    path('get-entity-details/<str:email>/', views.get_entity_details, name='get-entity-details'),
+    path('get-service-details/<str:email>/', views.get_service_details, name='get-service-details'),
+    path('get-entity-details/<str:name>/', views.get_entity_details, name='get-entity-details'),
+    path('get-cafe', views.CafeView.as_view(), name="get-cafe"),
+
 
     #Password
     # Just the password reset functionality

@@ -8,14 +8,14 @@
                 <h5 class="card-title">Partner Details</h5>
                 <ul class="list-group">
                     <li class="list-group-item d-flex" ><strong>Parent Name:</strong> <div class="mx-2" id="nameProfile"></div></li>
-                    <li class="list-group-item d-flex" ><strong>Pet Name:</strong> <div class="mx-2" id="emailProfile">{{data.Pet_Name}}</div> </li>
-                    <li class="list-group-item d-flex" ><strong>Phone Number:</strong> <div class="mx-2" id="phoneNumProfile">{{data.Phone_Number}}</div></li>
-                    <li class="list-group-item d-flex" ><strong>Pet Breed:</strong> <div class="mx-2" id="addressProfile">{{data.Pet_Breed}}</div></li>
-                    <li class="list-group-item d-flex" ><strong>Pet Check-in:</strong> <div class="mx-2" id="petCheckIn">{{data.Pet_checkIn}}</div></li>
-                    <li class="list-group-item d-flex" ><strong>Pet Breed:</strong> <div class="mx-2" id="PetCheckOut">{{data.Pet_Breed}}</div></li>
+                    <li class="list-group-item d-flex" ><strong>Pet Name:</strong> <div class="mx-2" id="emailProfile"></div> </li>
+                    <li class="list-group-item d-flex" ><strong>Phone Number:</strong> <div class="mx-2" id="phoneNumProfile"></div></li>
+                    <li class="list-group-item d-flex" ><strong>Pet Breed:</strong> <div class="mx-2" id="addressProfile"></div></li>
+                    <li class="list-group-item d-flex" ><strong>Pet Check-in:</strong> <div class="mx-2" id="petCheckIn"></div></li>
+                    <li class="list-group-item d-flex" ><strong>Pet Breed:</strong> <div class="mx-2" id="PetCheckOut"></div></li>
                     <li class="list-group-item d-flex" ><strong>Payment Status:</strong><input type="checkbox" class="mx-2" id="paymentStatusCheckProfile"></li>
                 </ul>
-                <button type="button" class="btn btn-warning mt-3 mx-1" data-id="${row.id}" onclick="getStaff('{{ user.staff_profile.first.id }}')" data-bs-toggle="modal" data-bs-target="#updateModal">Edit Partner<i class="bi bi-pencil-square mx-2"></i></button>
+                <button type="button" class="btn btn-warning mt-3 mx-1" data-id="" onclick="getStaff()" data-bs-toggle="modal" data-bs-target="#updateModal">Edit Partner<i class="bi bi-pencil-square mx-2"></i></button>
             </div>
         </div>
         <script>

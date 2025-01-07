@@ -67,11 +67,11 @@
 
                         {% if user.is_superuser %}
                         <li class="nav-item">
-                            <a class="nav-link" style="white-space: nowrap;" href="/fetch">Dashboard</a>
+                            <a class="nav-link" style="white-space: nowrap;" href="/cafe_admin">Dashboard</a>
                         </li>
                         {% elif user.staff_profile.first.is_active %}
                         <li class="nav-item">
-                            <a class="nav-link" style="white-space: nowrap;" href="/fetch">Dashboard</a>
+                            <a class="nav-link" style="white-space: nowrap;" href="/cafe_admin">Dashboard</a>
                         </li>
                         {% else %}
                             {% if user.is_authenticated %}
