@@ -1,0 +1,15 @@
+#add_more{
+    color: white !important;
+    background-color: #fa8231 !important;
+    border-radius: 15px !important;
+    border: 0 !important;
+
+}
+#remove_more{
+    color: rgb(245, 241, 241) !important;
+    background-color: #fc5c65 !important;
+    border-radius: 15px !important;
+    border: 0 !important;
+    display: none;
+
+}

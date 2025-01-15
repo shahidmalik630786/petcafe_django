@@ -1,0 +1,79 @@
+
+
+  .dot_green {
+  height: 25px;
+  width: 25px;
+  background-color: #0f0;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.dot_cyan {
+  height: 25px;
+  width: 25px;
+  background-color: #0ff;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.dot_red {
+  height: 25px;
+  width: 25px;
+  background-color: #f00;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.dot_yellow {
+  height: 25px;
+  width: 25px;
+  background-color: #ff0;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+
+.nav-link {
+  align-items: center;
+}
+
+.nav-link svg{
+  height: 16px !important;
+  width: 16px !important;
+  margin-right: 2px !important;
+}
+.nav-link.active svg{
+  fill: white !important;
+}
+
+.title-margin {
+  /* Default styles */
+  margin-left: 0;
+  margin-top: 0;
+}
+
+/* Apply specific styles only for small screen sizes (mobile) */
+@media (max-width: 768px) {
+  .title-margin {
+    margin-left: 50px;
+    margin-top: 9px;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .entity-title-margin {
+    margin-left: 40px;
+  }
+}
+
+.training_row td {
+  background-color: #FF0000;
+  color: white;
+}
+
+.booked_row td {
+  background-color: #605d5d;
+  color: white;
+}
+

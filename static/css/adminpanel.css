@@ -1,0 +1,19 @@
+.customtable{
+    overflow: scroll;
+    width: 100%;
+    display: inline-block;
+}
+/* .customtable table{
+    width: 5000px !important;
+} */
+.customtable table thead  tr th{
+    border-top: 1px solid #ddd;
+}
+
+#cafeTable_filter input{
+    margin-bottom: 5px;
+}
+
+#partnershipTable_filter input{
+    margin-bottom: 5px;
+}

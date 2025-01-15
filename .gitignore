@@ -20,7 +20,7 @@ uploads/
 
 # Static files
 staticfiles/
-static/
+static_files/
 
 # Python virtual environments
 venv/
